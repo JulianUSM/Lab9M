@@ -1,8 +1,9 @@
 package Lab9;
 
 public class MaxHeap {
+	
     private int[] data;
-    
+    private int index = 0; // which index to use when adding
     /**
      * @param data
      */
@@ -26,12 +27,36 @@ public class MaxHeap {
     }
     
     /**
+     * Lucas's Method
+     * 
+     * if data is equal, must be pushed to the right
+     * 
      * Adds new item to the max-heap
      * @param newData the input value to be added to the max-heap
      */
     public void add(int newData)
     {
-        // Your code goes here
+    	//this means the heap has just been created
+        if(index == 0) {
+        	data[index] = newData;
+        	return; // the rest of the method doesn't need to run since the data has been added
+        }
+        index++; //new values means add one index
+        int parentIndex = (index-1)/2; // the index of the parent value
+        int parentValue = data[parentIndex]; // data in the parent node
+        
+        //means if the new data will be bigger than its parent
+        //so a swap must be used
+        if(parentValue < newData) {
+        	
+        	data[parentIndex] = newData; //new data now becomes the parent node
+        	
+        	data[index] = parentValue; //parent node is now the child
+        } else { // if the data is equal or less than the parent
+        	
+        	data[index] = newData; //places the node normally 
+        }    	        	
+    	
     }
 
     /**
