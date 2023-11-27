@@ -2,13 +2,14 @@ package Lab9;
 
 public class MaxHeap {
     private int[] data;
+    private int index = 0; // which index to use when adding
     
     /**
      * @param data
      */
     public MaxHeap(int[]data)
     {
-        this.setData(MaxHeapMaker.heapify(data));
+        this.setData(data);
     }
     
     /**
