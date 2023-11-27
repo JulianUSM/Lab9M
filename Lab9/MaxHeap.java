@@ -18,11 +18,32 @@ public class MaxHeap {
      */
     public int delete()
     {
-        // Your codes goes here
+    	int maxValue = 0;
         
+        // Store and remove the max value by replacing it with the last element
+        maxValue = data[0];
+        data[0] = data[data.length];
+        data[data.length] = 0;
+
+        int i = 0; // Iteration variable 
+        while(data[i] < data[(2*i)+2] || data[i] < data[(2*i)+1]){
+        	// Switch Right Child
+        	if(data[(2*i)+2] > data[(2*i)+1]){
+        		int temp = data[i];
+        		data[i] = data[(2*i)+2];
+        		data[(2*i)+2] = temp;
+        		i = (2*i)+2;
+        	}
+        	// Switch Left Child
+        	else if (data[(2*i)+1] > data[(2*i)+2]){
+        		int temp = data[i];
+        		data[i] = data[(2*i)+1];
+        		data[(2*i)+1] = temp;
+        		i = (2*i)+1;
+        	}
+        }
         
-        // You should change this line and return the max value
-        return 0;
+        return maxValue;
     }
     
     /**
